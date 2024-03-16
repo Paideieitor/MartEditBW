@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="MFC">
+      <UniqueIdentifier>{2ced170c-e29f-4cac-8709-df1864b6e315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{c51869a0-4567-41fa-a964-50462db9cf55}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="MartEditBW.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="PriceChanger.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="CChangePriceDlg.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="MartEditBWDlg.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="CChangeItemsDlg.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemChanger.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="MartChanger.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="MartEditBW.cpp">
+      <Filter>MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="MartEditBWDlg.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="CChangePriceDlg.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="CChangeItemsDlg.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MartEditBW.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MartEditBW.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MartEditBW.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
