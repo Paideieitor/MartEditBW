@@ -135,35 +135,121 @@ private:
 
     void LoadMarts()
     {
-        mart_names.push_back(NULL_NAME); mart_position.push_back(-1); mart_amount.push_back(0);
-        mart_names.push_back(L"1 Badge Pokemart"); mart_position.push_back(0x51538); mart_amount.push_back(2);
-        mart_names.push_back(L"Shopping Mall TM Counter"); mart_position.push_back(0x5153C); mart_amount.push_back(2);
-        mart_names.push_back(L"Icirrus City TM Counter"); mart_position.push_back(0x51546); mart_amount.push_back(3);
-        mart_names.push_back(L"Driftveil Market Herbs"); mart_position.push_back(0x5154C); mart_amount.push_back(4);
-        mart_names.push_back(L"Mistralton City TM Counter"); mart_position.push_back(0x51564); mart_amount.push_back(4);
-        mart_names.push_back(L"Shopping Mall Vitamin Counter"); mart_position.push_back(0x51590); mart_amount.push_back(6);
-        mart_names.push_back(L"Accumula Town Pokemart"); mart_position.push_back(0x515E4); mart_amount.push_back(7);
-        mart_names.push_back(L"Nimbasa City TM Counter"); mart_position.push_back(0x515F2); mart_amount.push_back(7);
-        mart_names.push_back(L"Striaton City Pokemart"); mart_position.push_back(0x51600); mart_amount.push_back(8);
-        mart_names.push_back(L"Pokemon League Pokemart"); mart_position.push_back(0x51610); mart_amount.push_back(8);
-        mart_names.push_back(L"Lacunosa Town Pokemart"); mart_position.push_back(0x51620); mart_amount.push_back(8);
-        mart_names.push_back(L"Black City Pokemart"); mart_position.push_back(0x51630); mart_amount.push_back(8);
-        mart_names.push_back(L"Nacrene City/Shopping Mall x Item Shop"); mart_position.push_back(0x51640); mart_amount.push_back(8);
-        mart_names.push_back(L"Driftveil City Market Incense Shop"); mart_position.push_back(0x51650); mart_amount.push_back(9);
-        mart_names.push_back(L"Nacrene City Pokemart"); mart_position.push_back(0x51662); mart_amount.push_back(9);
-        mart_names.push_back(L"Undella Town Pokemart"); mart_position.push_back(0x51674); mart_amount.push_back(9);
-        mart_names.push_back(L"2 Badges Pokemart"); mart_position.push_back(0x51686); mart_amount.push_back(11);
-        mart_names.push_back(L"Castelia City Pokemart"); mart_position.push_back(0x5169C); mart_amount.push_back(11);
-        mart_names.push_back(L"Driftveil City Pokemart"); mart_position.push_back(0x516B2); mart_amount.push_back(11);
-        mart_names.push_back(L"Opelucid City Pokemart"); mart_position.push_back(0x516C8); mart_amount.push_back(11);
-        mart_names.push_back(L"3 Badges Pokemart"); mart_position.push_back(0x516F8); mart_amount.push_back(14);
-        mart_names.push_back(L"Shopping Mall Bottom Counter"); mart_position.push_back(0x51714); mart_amount.push_back(16);
-        mart_names.push_back(L"Shopping Mall Middle Counter"); mart_position.push_back(0x51734); mart_amount.push_back(16);
-        mart_names.push_back(L"5 Badges Pokemart"); mart_position.push_back(0x51774); mart_amount.push_back(17);
-        mart_names.push_back(L"7 Badges Pokemart"); mart_position.push_back(0x51796); mart_amount.push_back(18);
-        mart_names.push_back(L"8 Badges Pokemart"); mart_position.push_back(0x517BA); mart_amount.push_back(19);
-        mart_names.push_back(L"Battle Subway TM Counter"); mart_position.push_back(0x51850); mart_amount.push_back(11);
-        mart_names.push_back(L"Battle Subway Item Counter"); mart_position.push_back(0x518A0); mart_amount.push_back(39);
+        mart_names.push_back(NULL_NAME); 
+        mart_position.push_back(-1);
+        mart_amount.push_back(0);
+
+        mart_names.push_back(L"1 Badge Pokemart");
+        mart_position.push_back(0x51538);
+        mart_amount.push_back(2);
+
+        mart_names.push_back(L"Shopping Mall TM Counter");
+        mart_position.push_back(0x5153C);
+        mart_amount.push_back(2);
+
+        mart_names.push_back(L"Icirrus City TM Counter");
+        mart_position.push_back(0x51546);
+        mart_amount.push_back(3);
+
+        mart_names.push_back(L"Driftveil Market Herbs");
+        mart_position.push_back(0x5154C);
+        mart_amount.push_back(4);
+
+        mart_names.push_back(L"Mistralton City TM Counter");
+        mart_position.push_back(0x51564);
+        mart_amount.push_back(4);
+
+        mart_names.push_back(L"Shopping Mall Vitamin Counter");
+        mart_position.push_back(0x51590);
+        mart_amount.push_back(6);
+
+        mart_names.push_back(L"Accumula Town Pokemart");
+        mart_position.push_back(0x515E4);
+        mart_amount.push_back(7);
+
+        mart_names.push_back(L"Nimbasa City TM Counter");
+        mart_position.push_back(0x515F2);
+        mart_amount.push_back(7);
+
+        mart_names.push_back(L"Striaton City Pokemart");
+        mart_position.push_back(0x51600);
+        mart_amount.push_back(8);
+
+        mart_names.push_back(L"Pokemon League Pokemart");
+        mart_position.push_back(0x51610);
+        mart_amount.push_back(8);
+
+        mart_names.push_back(L"Lacunosa Town Pokemart");
+        mart_position.push_back(0x51620);
+        mart_amount.push_back(8);
+
+        mart_names.push_back(L"Black City Pokemart");
+        mart_position.push_back(0x51630);
+        mart_amount.push_back(8);
+
+        mart_names.push_back(L"Nacrene City/Shopping Mall x Item Shop");
+        mart_position.push_back(0x51640);
+        mart_amount.push_back(8);
+
+        mart_names.push_back(L"Driftveil City Market Incense Shop");
+        mart_position.push_back(0x51650);
+        mart_amount.push_back(9);
+
+        mart_names.push_back(L"Nacrene City Pokemart");
+        mart_position.push_back(0x51662);
+        mart_amount.push_back(9);
+
+        mart_names.push_back(L"Undella Town Pokemart");
+        mart_position.push_back(0x51674);
+        mart_amount.push_back(9);
+
+        mart_names.push_back(L"2 Badges Pokemart");
+        mart_position.push_back(0x51686);
+        mart_amount.push_back(11);
+
+        mart_names.push_back(L"Castelia City Pokemart");
+        mart_position.push_back(0x5169C);
+        mart_amount.push_back(11);
+
+        mart_names.push_back(L"Driftveil City Pokemart");
+        mart_position.push_back(0x516B2);
+        mart_amount.push_back(11);
+
+        mart_names.push_back(L"Opelucid City Pokemart");
+        mart_position.push_back(0x516C8);
+        mart_amount.push_back(11);
+
+        mart_names.push_back(L"3 Badges Pokemart");
+        mart_position.push_back(0x516F8);
+        mart_amount.push_back(14);
+
+        mart_names.push_back(L"Shopping Mall Bottom Counter");
+        mart_position.push_back(0x51714);
+        mart_amount.push_back(16);
+
+        mart_names.push_back(L"Shopping Mall Middle Counter");
+        mart_position.push_back(0x51734);
+        mart_amount.push_back(16);
+
+        mart_names.push_back(L"5 Badges Pokemart");
+        mart_position.push_back(0x51774);
+        mart_amount.push_back(17);
+
+        mart_names.push_back(L"7 Badges Pokemart");
+        mart_position.push_back(0x51796);
+        mart_amount.push_back(18);
+
+        mart_names.push_back(L"8 Badges Pokemart");
+        mart_position.push_back(0x517BA);
+        mart_amount.push_back(19);
+
+        mart_names.push_back(L"Battle Subway TM Counter");
+        mart_position.push_back(0x51850);
+        mart_amount.push_back(11);
+
+        mart_names.push_back(L"Battle Subway Item Counter");
+        mart_position.push_back(0x518A0);
+        mart_amount.push_back(39);
     }
 
     int GetMartData(CString name, long int& position, unsigned int& amount)

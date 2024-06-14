@@ -2,6 +2,8 @@
 
 #include "MartChanger.h"
 
+#include <time.h>
+
 class PriceChanger : public MartChanger
 {
 public:
@@ -41,8 +43,32 @@ public:
         
         wchar_t file_name[1024u];
         memset(file_name, 0, 1024u);
-        swprintf_s(file_name, 1024u, L"%s\\4_%s.bin", item_folder_path.GetBuffer(), ID_str);
-        
+
+        // CAUTION: professional hardcoding ahead
+        short digits = 1;
+        if (ID >= 10)
+            digits = 2;
+        if (ID >= 100)
+            digits = 3;
+        if (ID >= 1000)
+            digits = 4;
+        switch (digits)
+        {
+        case 1:
+            swprintf_s(file_name, 1024u, L"%s\\4_0000000%s.bin", item_folder_path.GetBuffer(), ID_str);
+            break;
+        case 2:
+            swprintf_s(file_name, 1024u, L"%s\\4_000000%s.bin", item_folder_path.GetBuffer(), ID_str);
+            break;
+        case 3:
+            swprintf_s(file_name, 1024u, L"%s\\4_00000%s.bin", item_folder_path.GetBuffer(), ID_str);
+            break;
+        case 4:
+            swprintf_s(file_name, 1024u, L"%s\\4_0000%s.bin", item_folder_path.GetBuffer(), ID_str);
+            break;
+        }
+        // end of hardcoding zone
+
         FILE* file;
         _wfopen_s(&file, file_name, L"r");
         if (!file)
@@ -77,20 +103,38 @@ public:
 
         int price = _wtoi(price_str.GetBuffer());
 
-        CString new_item_file = current_item_file;
-        int slash_position = new_item_file.ReverseFind(L'\\');
-        new_item_file.Insert(slash_position + 1, L"Changed\\");
+        CString backup_folder = current_item_file;
+        int slash_position = backup_folder.ReverseFind(L'\\');
 
-        if (CopyFileW(current_item_file, new_item_file, FALSE) == FALSE && GetLastError() == (DWORD)3)
+        CString item_file_name = current_item_file.Right(current_item_file.GetLength() - slash_position - 1);
+
+        backup_folder = backup_folder.Left(slash_position);
+        slash_position = backup_folder.ReverseFind(L'\\');
+        backup_folder = backup_folder.Left(slash_position + 1);
+
+        backup_folder.Insert(slash_position + 1, L"MartEditItemDataBackUp\\");
+
+        CString backup_item_file = backup_folder;
+        backup_item_file.Insert(backup_item_file.GetLength(), item_file_name);
+
+        time_t t = time(NULL);
+        tm date;
+        localtime_s(&date, &t);
+        wchar_t dateStr[128];
+        memset(dateStr, 0, 128);
+        swprintf_s(dateStr, L"_%d-%02d-%02d_%02d-%02d-%02d", date.tm_year + 1900, date.tm_mon + 1, date.tm_mday, date.tm_hour, date.tm_min, date.tm_sec);
+        backup_item_file.Insert(backup_item_file.GetLength(), dateStr);
+
+        backup_item_file.Insert(backup_item_file.GetLength(), L".bak");
+
+        if (CopyFileW(current_item_file, backup_item_file, FALSE) == FALSE && GetLastError() == (DWORD)3)
         {
-            CString changed_folder_path = item_folder_path;
-            changed_folder_path.Insert(changed_folder_path.GetLength(), L"\\Changed");
-            if (_wmkdir(changed_folder_path) < 0)
+            if (_wmkdir(backup_folder) < 0)
             {
                 last_error = Error::CANT_OPEN_ITEM_FILE;
                 return -1;
             }
-            if (CopyFileW(current_item_file, new_item_file, FALSE) == FALSE)
+            if (CopyFileW(current_item_file, backup_item_file, FALSE) == FALSE)
             {
                 last_error = Error::CANT_OPEN_ITEM_FILE;
                 return -1;
@@ -98,7 +142,7 @@ public:
         }
 
         FILE* file;
-        _wfopen_s(&file, new_item_file.GetBuffer(), L"r+");
+        _wfopen_s(&file, current_item_file.GetBuffer(), L"r+");
         if (!file)
         {
             last_error = Error::CANT_OPEN_ITEM_FILE;

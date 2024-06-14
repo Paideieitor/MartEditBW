@@ -69,8 +69,7 @@ void CChangeItemsDlg::OnBnClickedMartPathButton()
 			return;
 	}
 
-	LPCTSTR file_dlg_filter = L"Binary (*.bin)|*.bin|";
-	CFileDialog file_dlg(TRUE, L"bin", NULL, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, file_dlg_filter, AfxGetMainWnd());
+	CFileDialog file_dlg(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, NULL, AfxGetMainWnd());
 
 	if (file_dlg.DoModal() == IDOK)
 	{
