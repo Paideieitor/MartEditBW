@@ -6,6 +6,8 @@ This app does not support adding additional items to the shop.
 
 If the application fails to open try installing the [VC redistribution](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 
+![](resources/blz_cmd.png)
+
 ## How to use
 
 ### Item Tab
