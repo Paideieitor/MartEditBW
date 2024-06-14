@@ -20,7 +20,7 @@ If the application fails to open try installing the [VC redistribution](https://
 1. Extract file ``y9.bin`` using Tinke         
 ![](resources/tinke_y9.png)
 2. Open the file ``y9.bin`` using HxD
-3. Go to the line ``000002B0`` and change the last byte from ``03`` to ``02``           
+3. Go to the line ``000002B0`` and change the last byte from ``03`` to ``00`` (THE IMAGE IS WRONG)           
 ![](resources/hxd_y9_mod.png)
 4. Save the ``y9.bin`` file in HxD
 5. Reimport the ``y9.bin`` file into your ROM using Tinke
