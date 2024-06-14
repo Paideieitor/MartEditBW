@@ -1,24 +1,46 @@
 # MartEditBW
 version 0.1
 
-MartEditBW allows to edit the items of every shop  in Black/White and edit the price of every item.
-This app does not support adding additional items to the shop.
+MartEditBW allows to edit the items of every shop  in Black/White (untested in White tbh) and edit the price of every item.
+This app does not support adding additional items to the shop or editing BP price.
 
 If the application fails to open try installing the [VC redistribution](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 
-![](resources/blz_cmd.png)
+## Required Tools
+
+1. Download [TinkeDSi](https://github.com/R-YaTian/TinkeDSi/releases)
+2. Download [Knarc-UI](https://github.com/dev-cyw/Knarc-UI/releases)
+3. Download [Nintendo_DS_Compressors](https://www.romhacking.net/utilities/826/)
+4. Download [HxD](https://mh-nexus.de/en/hxd/)
 
 ## How to use
-
+(Ignore the fact that some Tinke screenshots say Pokemon White 2, I'm a dumbass. You should find the same files in the same place when you open the correct ROM)
 ### Item Tab
-- To edit the items extract the overlay9_0021.bin file using Kiwi.ds editor or CrystalTile2 (I tried using Tinke but the file seems to be compressed or sliced)
-- Once extracted, load the file it in MartEditBW using the File search, select the shop, the slot and the new item you want to change
-- To save your changes use the Save button when you are done editing a shop, a new .bin file will be created with the changes (saving multiple times does not create multiple files)
-- Once all the changes have been saved use Tinke to change the overlay9_21 file for our changed overlay9_0021.bin
+__THESE STEPS ONLY HAS TO BE PERFORMED ONCE PER ROM:__
+
+1. Extract file ``y9.bin`` using Tinke         
+![](resources/tinke_y9.png)
+2. Open the file ``y9.bin`` using HxD
+3. Go to the line ``000002B0`` and change the last byte from ``03`` to ``02``           
+![](resources/hxd_y9_mod.png)
+4. Save the ``y9.bin`` file
+5. Reimport the ``y9.bin`` file into your ROM using Tinke
+![](resources/tinke_y9_change.png)
+
+__THESE STEPS HAVE TO BE PERFORMED EVERYTIME YOU MAKE CHANGES TO THE MARTS:__
+
+1. Extract file ``overlay9_21`` using Tinke           
+![](resources/tinke_ovl21.png)
+2. Open a cmd console in the folder where you stored the [Nintendo_DS_Compressors](https://www.romhacking.net/utilities/826/) tools               
+![](resources/open_cmd.png)
+3. From the command console use the ``blz`` exe with the decompress option (``-d``) on the ``overlay9_21`` file:
+  - The generic command is ``blz.exe -d [your overlay path]/overlay9_21``
+  - Since I have the ``blz.exe`` and ``overlay9_21`` in the same forlder, and I opened the cmd from that folder the command I need to use is ``blz.exe -d overlay9_21``            
+![](resources/blz_cmd.png)
+4. Now open MartEditBW and using the ``...`` button find and select the ``overlay9_21`` file
+5. All the marts should load and you can now change the items in them (remember you have to Save after each mart modification)
+6. Once you have applied the changes you want, reimport the ``overlay9_21`` file into your ROM using Tinke            
+![](resources/tinke_ovl21_change.png)
 
 ### Price Tab
-- To edit the prices extract the UNPACKED folder a/0/2/4 using Tinke
-- Once the folder is extracted, load it in MartEditBW the Folder search, select the item and input the new price
-- To save the price use the Save button on every object that is changed, a Changed folder will be created in the same dirtectory the extracted files are where the changed files will be stored
-- Once all changes have been made use Tinke to unpack the a/0/2/4 folder and replace each file from the Changed folder individually
-- When all the files have been changed (still in Tinke), remember to PACK the a/0/2/4 folder
+
