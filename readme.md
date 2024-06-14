@@ -1,5 +1,5 @@
 # MartEditBW
-version 0.1
+version 0.2
 
 MartEditBW allows to edit the items of every shop  in Black/White (untested in White tbh) and edit the price of every item.        
 This app does not support adding additional items to the shop or editing BP price.       
