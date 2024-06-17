@@ -96,18 +96,44 @@ public:
 
         bool isSubway = IsSubwayShop(mart_name); // Subway shops are stored differently
 
-        CString new_mart_file = mart_file_path;
-        int dot_position = new_mart_file.ReverseFind(L'.');
-        new_mart_file.Insert(dot_position, L"(Changed)");
+        CString backup_folder = mart_file_path;
+        int slash_position = backup_folder.ReverseFind(L'\\');
 
-        if (CopyFileW(mart_file_path, new_mart_file, FALSE) == FALSE && GetLastError() == (DWORD)3)
+        CString overlay_file_name = mart_file_path.Right(mart_file_path.GetLength() - slash_position - 1);
+
+        backup_folder = backup_folder.Left(slash_position + 1);
+
+        backup_folder.Insert(slash_position + 1, L"MartEditItemDataBackUp\\");
+
+        CString backup_overlay_file = backup_folder;
+        backup_overlay_file.Insert(backup_overlay_file.GetLength(), overlay_file_name);
+
+        time_t t = time(NULL);
+        tm date;
+        localtime_s(&date, &t);
+        wchar_t dateStr[128];
+        memset(dateStr, 0, 128);
+        swprintf_s(dateStr, L"_%d-%02d-%02d_%02d-%02d-%02d", date.tm_year + 1900, date.tm_mon + 1, date.tm_mday, date.tm_hour, date.tm_min, date.tm_sec);
+        backup_overlay_file.Insert(backup_overlay_file.GetLength(), dateStr);
+
+        backup_overlay_file.Insert(backup_overlay_file.GetLength(), L".bak");
+
+        if (CopyFileW(mart_file_path, backup_overlay_file, FALSE) == FALSE && GetLastError() == (DWORD)3)
         {
-            last_error = Error::MART_FILE_DOESNT_EXIST;
-            return -1;
+            if (_wmkdir(backup_folder) < 0)
+            {
+                last_error = Error::CANT_OPEN_ITEM_FILE;
+                return -1;
+            }
+            if (CopyFileW(mart_file_path, backup_overlay_file, FALSE) == FALSE)
+            {
+                last_error = Error::CANT_OPEN_ITEM_FILE;
+                return -1;
+            }
         }
 
         FILE* file;
-        _wfopen_s(&file, new_mart_file, L"r+b");
+        _wfopen_s(&file, mart_file_path, L"r+b");
         if (!file)
         {
             last_error = Error::MART_FILE_DOESNT_EXIST;
