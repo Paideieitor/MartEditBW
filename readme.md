@@ -1,7 +1,7 @@
 # MartEditBW
 version 0.2
 
-MartEditBW allows to edit the items of every shop  in Black/White (untested in White tbh) and edit the price of every item.        
+MartEditBW allows to edit the items of every shop  in Black (__*DOESN'T WORK WITH WHITE*__) and edit the price of every item.        
 This app does not support adding additional items to the shop or editing BP price.       
 Ignore the fact that some Tinke screenshots say Pokemon White 2, I'm a dumbass. (You should find the same files in the same place when you open the correct ROM)
 
